@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOTOS_WRodrigues - Intro</title>
+
+  <!-- Tailwind e tsParticles -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-black flex flex-col items-center justify-center min-h-screen relative overflow-hidden">
+  
+  <!-- Texto animado -->
+  <p class="animado text-white text-2xl md:text-4xl font-mono"></p>
+  
+  <!-- Botão de entrar -->
+  <button id="enterBtn"
+          class="z-10 mt-10 absolute bottom-20 px-6 py-3 text-lg rounded-lg bg-white text-black opacity-0 transition-opacity duration-700"
+          style="animation: fadeIn 1s ease-in-out 3s forwards;">
+    ≡
+  </button>
+
+  <!-- JS principal -->
+  <script type="module" src="./js/intro.js"></script>
+</body>
+</html>

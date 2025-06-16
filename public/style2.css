@@ -1,0 +1,247 @@
+/* style2.css */
+
+/* Estilo base */
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px 10px; /* Adjusted padding for smaller screens */
+  box-sizing: border-box; /* Ensures padding is included in element's total width and height */
+}
+
+/* Painel */
+.painel {
+  background-color: #fff;
+  color: #000;
+  padding: 20px; /* Adjusted padding */
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Título */
+h2 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 15px; /* Adjusted margin */
+  font-size: 1.8rem; /* Responsive font size */
+}
+
+/* Container do botão */
+.topo-tabela {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+/* Botão principal branco com texto preto */
+#btnAdicionar {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 8px 12px; /* Adjusted padding */
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  font-size: 0.9rem; /* Responsive font size */
+}
+
+#btnAdicionar:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Tabela */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px; /* Adjusted margin */
+  background-color: #fff;
+  color: #000;
+  font-size: 0.85rem; /* Responsive font size for table content */
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+th, td {
+  padding: 8px; /* Adjusted padding */
+  text-align: left;
+}
+
+/* Responsividade da tabela para telas menores */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block; /* Make table elements act as block elements */
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; /* Hide table headers */
+    }
+
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; /* Space for the label */
+        text-align: right;
+        font-size: 0.9rem; /* Adjust font size for data cells */
+    }
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #333;
+        font-size: 0.9rem; /* Adjust font size for labels */
+    }
+
+    /* Assign data-title to td:before for content */
+    td:nth-of-type(1):before { content: "Título:"; }
+    td:nth-of-type(2):before { content: "Descrição:"; }
+    td:nth-of-type(3):before { content: "Imagem:"; }
+    td:nth-of-type(4):before { content: "Ações:"; }
+
+    td img { /* Ensure images are responsive in the table */
+        max-width: 60px;
+        height: auto;
+        display: block;
+        margin-left: auto; /* Center image if needed */
+    }
+}
+
+/* Botões gerais */
+button {
+  padding: 8px 14px; /* Adjusted padding */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 5px 0;
+  font-size: 0.9rem; /* Responsive font size */
+}
+
+/* Botões dentro da tabela */
+td button {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 5px 10px; /* Adjusted padding */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 0.8rem; /* Smaller font for table buttons */
+}
+
+td button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Formulário */
+#formulario {
+  display: none;
+  margin-top: 20px;
+  padding: 15px; /* Adjusted padding */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  color: #000;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto; /* Center the form */
+}
+
+/* Campos do formulário */
+input, textarea {
+  width: calc(100% - 16px); /* Account for padding */
+  margin-bottom: 8px; /* Adjusted margin */
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  font-size: 0.9rem; /* Responsive font size */
+}
+
+label {
+    font-size: 0.9rem; /* Responsive font size for labels */
+    margin-bottom: 4px;
+    display: block; /* Ensure labels are on their own line */
+}
+
+/* Galeria de imagens */
+#listaImagens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Adjusted gap */
+  justify-content: center; /* Center images in the gallery */
+}
+
+#listaImagens img {
+  width: 80px; /* Smaller image size for mobile */
+  height: 80px; /* Smaller image size for mobile */
+  object-fit: cover;
+  border: 2px solid transparent;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#listaImagens img.selecionada {
+  border-color: #007bff;
+}
+
+/* Media query para telas muito pequenas (abaixo de 480px, como 350px) */
+@media (max-width: 480px) {
+    body {
+        padding: 15px 8px; /* Even smaller padding */
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+    #btnAdicionar {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    table {
+        font-size: 0.75rem; /* Smaller font for table content */
+    }
+    td:before {
+        font-size: 0.8rem;
+    }
+    button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    td button {
+        padding: 4px 8px;
+        font-size: 0.7rem;
+    }
+    input, textarea, label {
+        font-size: 0.8rem;
+    }
+    #listaImagens img {
+        width: 60px;
+        height: 60px;
+    }
+}

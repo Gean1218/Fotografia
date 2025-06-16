@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/4c529e0798.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body class="bg-gray-100">
+    <section>
+        <section class="w-full p-10 flex justify-center">
+             <!-- Botão = -->
+  <a href="detalhes.html"
+     class="botaoMenu relative flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-lg text-4xl font-bold shadow hover:bg-gray-800 hover:text-white transition duration-300 font-playfair mt-4">
+    &#8801;
+    <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+  </a>
+    </section>
+    <section class="min-h-screen flex items-center justify-center p-10">
+        <div class="flex flex-col md:flex-row items-center gap-10 max-w-6xl w-full">
+          <!-- Lado esquerdo: Moldura da imagem -->
+          <!-- Lado esquerdo: Moldura da imagem -->
+        <div class="relative w-[350px] h-[450px] flex-shrink-0 overflow-hidden">
+         <!-- Linha grossa -->
+         <div class="border-4 border-black w-full h-full absolute top-0 left-0 z-0"></div>
+
+             <!-- Espaço de 5px + imagem -->
+          <div class="absolute top-[5px] left-[5px] w-[calc(100%-10px)] h-[calc(100%-10px)] z-10 border border-black overflow-hidden rounded">
+           <div id="imagem-destacada" class="w-full h-full"></div>
+         </div>
+        </div>
+         <!-- Lado direito: Sobre a Fotógrafa (somente texto) com fundo branco -->
+      <div class="flex flex-col justify-center items-center bg-white p-8 rounded-2xl w-full text-center">
+        <h2 class="text-3xl font-bold font-['Playfair_Display'] mb-4">Sobre a Fotógrafa</h2>
+        <p class="text-gray-800 text-lg max-w-md mb-6">
+          Meu nome é Wenaly Rodrigues de Lima, tenho 25 anos e sou fotógrafa. Uma mulher determinada, humilde, sonhadora e guerreira. Cada passo da minha caminhada carrega histórias de superação e resiliência.
+
+A vida me ensinou, desde muito jovem, que é preciso ser forte. Enfrentei desafios na minha adolescência que poderiam ter me feito desistir, mas escolhi transformar a dor em força e as dificuldades em combustível para seguir em frente.
+
+Hoje, além de mulher e profissional, sou mãe de um menino que é minha maior motivação, meu maior amor e minha razão diária para querer conquistar o mundo.
+
+A fotografia não é só meu trabalho, é a minha paixão, minha arte e meu propósito. Através das minhas lentes, conto histórias, eternizo momentos e ajudo as pessoas a enxergarem o quanto são únicas e especiais.
+
+Sigo construindo minha história com muito trabalho, inteligência e fé. Sei que ainda há muito por conquistar  e vou. Porque onde há determinação, não existem limites.
+        </p>
+      </div>
+
+    
+        </div>
+        <!-- Overlay de carregamento -->
+<div id="overlayCarregando"
+     class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center text-white z-[9999] opacity-0 pointer-events-none transition-opacity duration-300 hidden">
+  <div id="spinnerOverlay" class="w-12 h-12 border-4 border-t-transparent border-white rounded-full animate-spin"></div>
+</div>
+      </section>
+    
+      <!-- Footer -->
+      <footer class="bg-[#f5f5dc] py-10">
+        <div class="max-w-4xl mx-auto px-4 text-left">
+          <h1 class="text-3xl font-bold mb-4">Contatos</h1>
+          <div class="flex flex-col space-y-4 items-start">
+            
+            <a href="https://www.instagram.com/fotografias_wenaly/" target="_blank" class="text-black text-2xl hover:text-pink-500">
+              <i class="fab fa-instagram">FOTOS_WRodrigues</i>
+            </a>
+            <a href="https://wa.me/553171018341" target="_blank" class="text-black text-2xl hover:text-green-500">
+              <i class="fab fa-whatsapp">FOTOS_WRodrigues</i>
+            </a>
+          </div>
+        </div>
+      </footer>
+      <script type="module" src="js/contato.js"></script>
+       <script type="module" src="./js/efeitoB.js"></script>
+</body>
+</html>  

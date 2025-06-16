@@ -1,0 +1,213 @@
+/* style.css */
+
+/* Estilos para a fonte Playfair Display */
+.playfair {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.fade-out {
+  animation: fadeOut 0.3s ease forwards;
+}
+    
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+#overlayCarregando.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Estilos para o carrossel de fotos */
+#carrossel {
+    overflow: hidden;
+    height: 500px; /* Default height */
+    position: relative;
+    width: 100%; /* Make carousel responsive */
+    max-width: 800px; /* Optional: limit max width on larger screens */
+}
+
+#fotos-container {
+    display: flex;
+    flex-direction: column;
+    animation: scroll 20s linear infinite;
+}
+
+/* Estilos para a moldura da imagem e a imagem em si */
+.moldura-imagem {
+    position: relative;
+    width: 350px; /* Default width */
+    height: 450px; /* Default height */
+    border: 4px solid black;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagem-destacada {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+@keyframes fadeOut {
+    to {
+      opacity: 0;
+    }
+}
+
+@keyframes scroll {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsividade para telas menores que 768px (já existente) */
+@media (max-width: 768px) {
+    .moldura-imagem {
+        width: 300px;
+        height: 400px;
+    }
+}
+
+/* Nova responsividade para telas pequenas (smartphones), a partir de 350px de largura */
+@media (max-width: 576px) { /* Similar to Bootstrap's 'sm' breakpoint */
+    body {
+        padding: 15px; /* Adjust general padding */
+    }
+
+    h1 {
+        font-size: 2.2rem; /* Slightly smaller title */
+        margin-bottom: 15px;
+    }
+
+    .botaoMenu {
+        padding: 12px 25px; /* Slightly more compact buttons */
+        font-size: 1.6rem; /* Smaller font for menu buttons */
+        width: 220px; /* Adjust width to fit smaller screens better */
+    }
+
+    #carrossel {
+        height: 350px; /* Shorter carousel for smaller screens */
+        width: 90%; /* Take more width */
+    }
+
+    .moldura-imagem {
+        width: 250px; /* Smaller image frame */
+        height: 350px;
+        margin: 0 auto; /* Ensure it's centered */
+    }
+
+    /* Adjustments for Contato page */
+    .contato-content { /* Assuming a wrapper for contact content */
+        flex-direction: column; /* Stack contact info vertically */
+        align-items: center;
+    }
+    .text-3xl { /* About Photographer title */
+        font-size: 2rem;
+    }
+    .text-lg { /* About Photographer text */
+        font-size: 0.95rem;
+    }
+    footer {
+        padding: 15px 10px;
+    }
+    footer h1 {
+        font-size: 2rem;
+    }
+    footer .text-2xl {
+        font-size: 1.3rem;
+    }
+}
+
+/* Responsividade para a galeria de fotos (fotos.html) */
+@media (max-width: 640px) { /* Tailwind's sm breakpoint */
+    #galeria {
+        columns: 1 !important; /* Force single column on very small screens */
+        padding: 10px; /* Reduce padding for gallery */
+        gap: 10px; /* Reduce gap between images */
+    }
+    #modalImg {
+        max-width: 95vw; /* Make modal image fill more of the screen width */
+        max-height: 80vh; /* Adjust modal image height */
+    }
+}
+
+@media (min-width: 641px) and (max-width: 767px) { /* Between sm and md */
+    #galeria {
+        columns: 2 !important; /* Two columns */
+        padding: 15px;
+        gap: 15px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* Between md and lg */
+    #galeria {
+        columns: 3 !important; /* Three columns */
+        padding: 20px;
+        gap: 20px;
+    }
+}
+
+@media (min-width: 1024px) { /* lg and up */
+    #galeria {
+        columns: 4 !important; /* Four columns */
+        padding: 20px;
+        gap: 20px;
+    }
+}
+
+/* ===== ESTILOS PARA O BOTÃO DE ÍCONE DE LOGIN ===== */
+
+/* Estilo padrão (para telas maiores) */
+.login-icon-button {
+  width: 52px;      /* Largura do botão */
+  height: 52px;     /* Altura do botão */
+  padding: 0;       /* Removemos o padding para ter controle total */
+  border-radius: 12px; /* Cantos arredondados (squircle) */
+}
+
+.login-icon-button svg {
+  width: 28px;      /* Tamanho do ícone SVG */
+  height: 28px;
+}
+
+/* A partir de telas com 767px de largura ou menos (celulares e tablets na vertical) */
+@media (max-width: 767px) {
+  .login-icon-button {
+    width: 44px;      /* Largura menor para telas pequenas */
+    height: 44px;     /* Altura menor para telas pequenas */
+    border-radius: 50%; /* Deixa o botão perfeitamente redondo */
+    top: 15px;        /* Um pouco mais perto do topo */
+    left: 15px;       /* Um pouco mais perto da esquerda */
+  }
+
+  .login-icon-button svg {
+    width: 22px;      /* Ícone SVG um pouco menor */
+    height: 22px;
+  }
+}

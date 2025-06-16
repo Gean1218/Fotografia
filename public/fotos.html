@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="relative">
+
+  <!-- Overlay de Carregamento -->
+  <div id="overlayCarregando" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
+    <div class="animate-spin w-16 h-16 border-4 border-t-transparent border-white rounded-full"></div>
+  </div>
+
+  <div class="flex justify-center mt-4">
+    <!-- Botão = -->
+    <a href="detalhes.html"
+      class="botaoMenu relative flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-lg text-4xl font-bold shadow hover:bg-gray-800 hover:text-white transition duration-300 font-playfair mt-4">
+      &#8801;
+      <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+  </div>
+
+  <section id="galeria" class="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-4 p-4 space-y-4">
+    <!-- fotos aqui -->
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+    <div class="relative max-w-4xl w-full p-4">
+      <button id="fecharModal" class="absolute top-2 right-2 text-white text-2xl font-bold">&times;</button>
+      <img id="modalImg" src="" alt="Foto em destaque"
+        class="max-w-[90vw] max-h-[90vh] w-auto h-auto m-auto rounded-xl shadow-lg">
+    </div>
+  </div>
+
+  <script type="module" src="./js/FotoGaleria.js"></script>
+  <script type="module" src="./js/efeitoB.js"></script>
+
+</body>
+</html>

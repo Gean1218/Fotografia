@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Gerenciamento</title>
+  <link rel="stylesheet" href="style.css">   <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+  <!-- Botão = -->
+  <a href="detalhes.html"
+     class="botaoMenu relative flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-lg text-4xl font-bold shadow hover:bg-gray-800 hover:text-white transition duration-300 font-playfair mt-4">
+    &#8801;
+    <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+  </a>
+  <h2>Painel de Gerenciamento</h2>
+
+  <div class="topo-tabela">
+    <button id="btnAdicionar" onclick="abrirFormulario()">Adicionar Novo Card</button>
+  </div>
+
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Título</th>
+        <th>Descrição</th>
+        <th>Imagem</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaCards">
+    </tbody>
+  </table>
+
+  <div id="formulario" style="display: none;">
+    <h3 id="tituloFormulario">Adicionar Card</h3>
+    <input type="hidden" id="idCard">
+
+    <label for="inputTitulo">Título:</label><br>
+    <input type="text" id="inputTitulo"><br>
+
+    <label for="inputDescricao">Descrição:</label><br>
+    <textarea id="inputDescricao"></textarea><br>
+
+    <label>Selecionar Imagem:</label><br>
+    <div id="listaImagens"></div><br>
+
+    <button onclick="salvarCard()">Salvar</button>
+    <button onclick="fecharFormulario()">Cancelar</button>
+  </div>
+
+  <div id="cardsSalvos" class="cards-container"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+  <script src="js/configurao.js"></script>
+  <script type="module" src="./js/efeitoB.js"></script>
+</body>
+</html>

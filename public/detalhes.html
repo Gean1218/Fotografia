@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <!-- Seus Estilos -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Fontes do Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white h-screen flex flex-col justify-center items-center gap-10 relative">
+
+    <!-- Overlay de Carregamento -->
+    <div id="overlayCarregando" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center hidden z-50 pointer-events-none opacity-0 transition-opacity duration-300">
+        <div class="animate-spin w-16 h-16 border-4 border-t-transparent border-white rounded-full"></div>
+    </div>
+
+    <!-- ===== BOTÃO DE LOGIN COM ÍCONE E CLASSE ESPECÍFICA ===== -->
+    <!-- Este botão será controlado pelo CSS que você criou -->
+    <a href="login.html" class="botaoMenu login-icon-button absolute top-5 left-5 bg-gray-800 text-white hover:bg-gray-700 transition-colors duration-300 flex items-center justify-center">
+        <!-- Seu ícone de usuário -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 20a6 6 0 0 0-12 0"/>
+            <circle cx="12" cy="10" r="4"/>
+            <circle cx="12" cy="12" r="10"/>
+        </svg>
+        <!-- Spinner para o efeito de carregamento -->
+        <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+
+
+    <!-- Botão = -->
+    <a href="index.html"
+       class="botaoMenu relative flex items-center justify-center gap-3 bg-white text-black px-6 py-3 rounded-lg text-4xl font-bold shadow hover:bg-gray-800 hover:text-white transition duration-300 font-playfair mt-4">
+        &#8801;
+        <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+
+    <!-- Botão Fotos -->
+    <a href="fotos.html"
+       class="botaoMenu font-playfair bg-black text-white px-12 py-6 rounded-2xl text-3xl shadow-xl hover:bg-gray-200 transition duration-300 w-[250px] text-center flex justify-center items-center gap-3">
+        Fotos
+        <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+
+    <!-- Botão Projetos -->
+    <a href="projetos.html"
+       class="botaoMenu font-playfair bg-black text-white px-12 py-6 rounded-2xl text-3xl shadow-xl hover:bg-gray-200 transition duration-300 w-[250px] text-center flex justify-center items-center gap-3">
+        Eventos
+        <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+
+    <!-- Botão Contato -->
+    <a href="contato.html"
+       class="botaoMenu font-playfair bg-black text-white px-12 py-6 rounded-2xl text-3xl shadow-xl hover:bg-gray-200 transition duration-300 w-[250px] text-center flex justify-center items-center gap-3">
+        Contato
+        <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-white rounded-full"></span>
+    </a>
+
+    <!-- Script de carregamento -->
+     <script src="./js/efeitoB.js"></script>
+</body>
+</html>

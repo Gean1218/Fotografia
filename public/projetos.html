@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos</title>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    
+    <!-- ===== BIBLIOTECA TAILWIND CSS ADICIONADA AQUI ===== -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Seu CSS customizado (deve vir depois do Tailwind) -->
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+
+    <!-- Seu botão, que já está correto -->
+    <header class="site-header">
+        <a href="detalhes.html" class="menu-button botaoMenu" style="display: flex; align-items: center; gap: 0.5rem;">
+            &#8801;
+            <!-- O spinner que agora irá funcionar -->
+            <span class="spinner hidden animate-spin w-6 h-6 border-4 border-t-transparent border-black rounded-full"></span>
+        </a>
+    </header>
+
+    <!-- O container onde a galeria será criada -->
+    <div id="events-container"></div>
+    
+    <!-- 
+        Adicione o elemento do overlay aqui no seu body.
+        O seu JS precisa encontrar um elemento com id="overlayCarregando".
+        Exemplo:
+    -->
+    <div id="overlayCarregando" class="fixed inset-0 bg-black bg-opacity-70 z-50 hidden items-center justify-center pointer-events-none opacity-0 transition-opacity duration-300">
+        <!-- Você pode adicionar um ícone de carregamento maior aqui se quiser -->
+        <div class="w-16 h-16 border-8 border-t-transparent border-white rounded-full animate-spin"></div>
+    </div>
+
+
+    <!-- Seus scripts -->
+    <script type="module" src="js/projetos.js"></script>
+    <script src="js/efeitoB.js"></script> <!-- Removido type="module" para garantir a ordem de execução -->
+
+</body>
+</html>
