@@ -1,26 +1,24 @@
+// Importa o objeto principal 'config' do arquivo de configuração
+import { config } from './config.js';
+
 // Importa os módulos do Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Suas configurações do Firebase
-const firebaseConfig = {
-    apiKey: "AIzaSyB5D_kl0bgL1XXWQrl5JvcJCP6a5JTndc0",
-    authDomain: "fotografa-8f722.firebaseapp.com",
-    projectId: "fotografa-8f722",
-    storageBucket: "fotografa-8f722.appspot.com",
-    messagingSenderId: "548011944901",
-    appId: "1:548011944901:web:2a97fbf3f5f41edf08f9ac",
-    measurementId: "G-T55QTHJJDY"
-};
-
-// Inicializa o Firebase
-const app = initializeApp(firebaseConfig);
+// Inicializa o Firebase usando a configuração
+const app = initializeApp(config.firebase);
 const db = getFirestore(app);
 
 const eventsContainer = document.getElementById('events-container');
 
 async function carregarEventos() {
+    if (!eventsContainer) {
+        console.warn("Elemento #events-container não encontrado.");
+        return;
+    }
+
     try {
+        console.log("📡 Buscando documentos no Firestore...");
         const querySnapshot = await getDocs(collection(db, "cards"));
         eventsContainer.innerHTML = '';
 
@@ -29,20 +27,24 @@ async function carregarEventos() {
             return;
         }
 
+        console.log("✅ Total de cards encontrados:", querySnapshot.size);
+
         querySnapshot.forEach((doc) => {
             const cardData = doc.data();
             const cardId = doc.id;
 
-            // Filtra cards que não têm imagem ou título
-            if (cardData.Imagem && cardData.Titulo) {
-                
+            const titulo = cardData.titulo || 'Sem título';
+            const descricao = cardData.descricao || 'Sem descrição disponível';
+            const imagem = cardData.imagem || '';
+
+            if (imagem && titulo) {
                 const cardHtml = `
                     <div class="event-container">
                         <input type="checkbox" id="event-toggle-${cardId}" class="event-toggle">
 
                         <label for="event-toggle-${cardId}" class="event-preview">
-                            <img src="${cardData.Imagem}" alt="Prévia de ${cardData.Titulo}">
-                            <h2 class="preview-title">${cardData.Titulo}</h2>
+                            <img src="${imagem}" alt="Prévia de ${titulo}">
+                            <h2 class="preview-title">${titulo}</h2>
                         </label>
 
                         <div class="event-card">
@@ -51,12 +53,12 @@ async function carregarEventos() {
                                 
                                 <div class="card-content">
                                     <div class="card-photo-secondary">
-                                        <img src="${cardData.Imagem}" alt="Foto secundária de ${cardData.Titulo}">
+                                        <img src="${imagem}" alt="Foto secundária de ${titulo}">
                                     </div>
                                     <div class="card-text">
-                                        <h1>${cardData.Titulo}</h1>
-                                        <p class="subtitle">detalhes</p>
-                                        <p class="description">${cardData.Descricao}</p>
+                                        <h1>${titulo}</h1>
+                                        <p class="subtitle">Detalhes</p>
+                                        <p class="description">${descricao}</p>
                                     </div>
 
                                     <div class="card-contact">
@@ -71,7 +73,7 @@ async function carregarEventos() {
                                 </div>
 
                                 <div class="card-photo-main">
-                                    <img src="${cardData.Imagem}" alt="Foto principal de ${cardData.Titulo}">
+                                    <img src="${imagem}" alt="Foto principal de ${titulo}">
                                 </div>
                             </div>
                         </div>
@@ -83,9 +85,11 @@ async function carregarEventos() {
         });
 
     } catch (error) {
-        console.error("Erro ao carregar cards:", error);
+        console.error("❌ Erro ao carregar cards:", error);
         eventsContainer.innerHTML = '<p>Ocorreu um erro ao carregar os cards.</p>';
     }
 }
 
-carregarEventos();
+// Executa quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', carregarEventos);
+console.log("🔥 Firebase carregado, iniciando leitura dos cards...");

@@ -1,8 +1,12 @@
 import { buscaFotos } from "./fotos.js";
-const API_KEY = "AIzaSyAQjtnpM6hmOqBlzCA8UV89qlADczzhNY0";
-const FOLDER_ID = "1qylePfLPOwZLO06GjwIwrOqOlUMe3P3H";
-let listaFotos=[];
+import { config } from "./config.js"; // importa a config
+
+let listaFotos = [];
 
 export async function carregarListaFotos() {
-  return await buscaFotos(API_KEY, FOLDER_ID);
+  const API_KEY = config.googleDrive.apiKey;
+  const FOLDER_ID = config.googleDrive.folderId;
+
+  listaFotos = await buscaFotos(API_KEY, FOLDER_ID);
+  return listaFotos;
 }

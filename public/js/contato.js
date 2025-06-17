@@ -1,10 +1,12 @@
 import { buscaFotos } from "./fotos.js";
+import { config } from "./config.js";
 
-const API_KEY = "AIzaSyAQjtnpM6hmOqBlzCA8UV89qlADczzhNY0";
-const FOLDER_ID = "1qylePfLPOwZLO06GjwIwrOqOlUMe3P3H";
+const API_KEY = config.googleDrive.apiKey;
+const FOLDER_ID = config.googleDrive.folderId;
 
 // Nome da imagem que você quer exibir (ajuste conforme o necessário)
-const NOME_IMAGEM ="W_Contatos";
+const NOME_IMAGEM = "W_Contatos";
+
 async function carregarImagemDestacada() {
   try {
     const fotos = await buscaFotos(API_KEY, FOLDER_ID);

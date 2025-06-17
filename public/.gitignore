@@ -1,0 +1,5 @@
+# Ignorar arquivos de configuração que contêm segredos
+js/config.js
+
+# Ignorar futuras dependências de pacotes
+node_modules

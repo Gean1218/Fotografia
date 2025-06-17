@@ -1,16 +1,7 @@
-// Configuração do Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyB5D_kl0bgL1XXWQrl5JvcJCP6a5JTndc0",
-  authDomain: "fotografa-8f722.firebaseapp.com",
-  projectId: "fotografa-8f722",
-  storageBucket: "fotografa-8f722.firebasestorage.app",
-  messagingSenderId: "548011944901",
-  appId: "1:548011944901:web:2a97fbf3f5f41edf08f9ac",
-  measurementId: "G-T55QTHJJDY"
-};
+import { config } from './config.js';
 
-// Inicializar Firebase
-firebase.initializeApp(firebaseConfig);
+// Inicializar Firebase com config externa
+firebase.initializeApp(config.firebase);
 firebase.analytics();
 
 // Instância do auth

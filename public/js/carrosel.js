@@ -1,13 +1,21 @@
+// Importa o objeto principal 'config' do arquivo de configuração
+import { config } from './config.js';
 import { buscaFotos } from "./fotos.js";
 
-const API_KEY = "AIzaSyAQjtnpM6hmOqBlzCA8UV89qlADczzhNY0";
-const FOLDER_ID = "1qylePfLPOwZLO06GjwIwrOqOlUMe3P3H";
+// Pega as chaves do Google Drive do objeto de configuração
+const API_KEY = config.googleDrive.apiKey;
+const FOLDER_ID = config.googleDrive.folderId;
 
 export async function carrosel() {
   const fotos = await buscaFotos(API_KEY, FOLDER_ID);
-  console.log("Fotos carregadas:", fotos);
+  console.log("Fotos carregadas para o carrossel:", fotos);
 
   const Container = document.getElementById("fotos-container");
+  if (!Container) {
+      console.error('Elemento com id "fotos-container" não encontrado.');
+      return;
+  }
+
   const imagens = [...fotos, ...fotos]; // duplicar para rolar infinito
 
   imagens.forEach(foto => {

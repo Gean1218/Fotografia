@@ -1,29 +1,17 @@
-
-//🔥 Configuração do Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyB5D_kl0bgL1XXWQrl5JvcJCP6a5JTndc0",
-  authDomain: "fotografa-8f722.firebaseapp.com",
-  projectId: "fotografa-8f722",
-  storageBucket: "fotografa-8f722.appspot.com",
-  messagingSenderId: "548011944901",
-  appId: "1:548011944901:web:2a97fbf3f5f41edf08f9ac",
-  measurementId: "G-T55QTHJJDY"
-};
+import { config } from './config.js';
 
 // 🔥 Inicializa o Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config.firebase);
 const db = firebase.firestore();
 
-// 🗂️ ID da pasta do Google Drive
-const folderId = '1qylePfLPOwZLO06GjwIwrOqOlUMe3P3H';
-
-// 🔑 API Key da API do Google Drive
-const apiKey = 'AIzaSyAQjtnpM6hmOqBlzCA8UV89qlADczzhNY0';
+// 🔑 Configuração do Google Drive
+const folderId = config.googleDrive.folderId;
+const apiKey = config.googleDrive.apiKey;
 
 // 🔥 Variável para armazenar a imagem selecionada
 let imagemSelecionada = null;
 
-// 📦 Função para listar fotos do Google Drive
+// 📦 Listar fotos do Google Drive
 async function listarFotosDrive() {
   const url = `https://www.googleapis.com/drive/v3/files?q='${folderId}'+in+parents&key=${apiKey}&fields=files(id,name,mimeType)`;
 
@@ -41,7 +29,7 @@ async function listarFotosDrive() {
   mostrarImagens(fotos);
 }
 
-// 🖼️ Função para mostrar as imagens na tela
+// 🖼️ Mostrar imagens
 function mostrarImagens(imagens) {
   const container = document.getElementById('listaImagens');
   container.innerHTML = '';
@@ -61,7 +49,7 @@ function mostrarImagens(imagens) {
   });
 }
 
-// 🚀 Função para salvar no Firestore (COM A CORREÇÃO)
+// 🚀 Salvar card
 function salvarCard() {
   const titulo = document.getElementById('inputTitulo').value.trim();
   const descricao = document.getElementById('inputDescricao').value.trim();
@@ -71,13 +59,10 @@ function salvarCard() {
     return;
   }
 
-  // ===== AQUI ESTÁ A CORREÇÃO =====
-  // Agora salvamos os campos com a primeira letra maiúscula para
-  // que a página de exibição consiga encontrá-los.
   db.collection('cards').add({
-    Titulo: titulo,       // Antes era "titulo"
-    Descricao: descricao,   // Antes era "descricao"
-    Imagem: imagemSelecionada, // Antes era "imagem"
+    titulo: titulo,
+    descricao: descricao,
+    imagem: imagemSelecionada,
     criadoEm: firebase.firestore.FieldValue.serverTimestamp()
   })
     .then(() => {
@@ -87,7 +72,7 @@ function salvarCard() {
       imagemSelecionada = null;
       document.querySelectorAll('#listaImagens img').forEach(i => i.classList.remove('selecionada'));
       fecharFormulario();
-      carregarTabelaCards(); // ✅ atualiza tabela
+      carregarTabelaCards();
     })
     .catch(error => {
       console.error('Erro ao salvar:', error);
@@ -95,17 +80,16 @@ function salvarCard() {
     });
 }
 
-// 📂 Abrir formulário
+// 📂 Abrir e fechar formulário
 function abrirFormulario() {
   document.getElementById('formulario').style.display = 'block';
 }
 
-// 📁 Fechar formulário
 function fecharFormulario() {
   document.getElementById('formulario').style.display = 'none';
 }
 
-// 📋 Função para carregar cards na tabela
+// 📋 Carregar cards
 function carregarTabelaCards() {
   const tabela = document.getElementById('tabelaCards');
   tabela.innerHTML = '<tr><td colspan="4">Carregando...</td></tr>';
@@ -125,12 +109,10 @@ function carregarTabelaCards() {
         const card = doc.data();
         const linha = document.createElement('tr');
 
-        // Esta parte do código lê os dados, então ela precisa usar
-        // os nomes corretos do banco de dados (agora com letra maiúscula)
         linha.innerHTML = `
-          <td>${card.Titulo}</td>
-          <td>${card.Descricao}</td>
-          <td><img src="${card.Imagem}" alt="Imagem" style="width:80px; height:auto;"></td>
+          <td>${card.titulo}</td>
+          <td>${card.descricao}</td>
+          <td><img src="${card.imagem}" alt="Imagem" style="width:80px; height:auto;"></td>
           <td><button onclick="excluirCard('${doc.id}')">Excluir</button></td>
         `;
 
@@ -143,13 +125,13 @@ function carregarTabelaCards() {
     });
 }
 
-// 🗑️ Excluir card
+// 🗑️ Excluir
 function excluirCard(cardId) {
   if (confirm('Tem certeza que deseja excluir este card?')) {
     db.collection('cards').doc(cardId).delete()
       .then(() => {
         alert('Card excluído com sucesso!');
-        carregarTabelaCards();  // ✅ atualiza tabela
+        carregarTabelaCards();
       })
       .catch(error => {
         console.error('Erro ao excluir:', error);
@@ -158,6 +140,11 @@ function excluirCard(cardId) {
   }
 }
 
-// 🔥 Inicializa as funções ao carregar
+// 🚀 Inicialização
 listarFotosDrive();
 carregarTabelaCards();
+// 🪟 Disponibiliza no escopo global (para funcionar com onclick no HTML)
+window.abrirFormulario = abrirFormulario;
+window.fecharFormulario = fecharFormulario;
+window.salvarCard = salvarCard;
+window.excluirCard = excluirCard;
